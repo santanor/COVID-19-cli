@@ -7,6 +7,9 @@ A small CLI to track the progress of COVID-19
 * [npm](https://www.npmjs.com/get-npm)
 
 ## Installation
+### From package manager
+* Run `npm i @santanor/covid-19-cli -g`
+### From Source
 * Pull the repo
 * Navigate to the `src` folder
 * Run `npm install -g` to make the command available globally
