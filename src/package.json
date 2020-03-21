@@ -17,9 +17,7 @@
     "clui": "^0.3.6",
     "commander": "^5.0.0",
     "got": "^10.6.0",
-    "node-emoji": "^1.10.0"
-  },
-  "devDependencies": {
+    "node-emoji": "^1.10.0",
     "country-list": "^2.2.0"
   }
 }
