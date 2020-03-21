@@ -1,7 +1,7 @@
 {
-  "name": "src",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@santanor/covid-19-cli",
+  "version": "0.0.2",
+  "description": "Provides latest COVID-19 information",
   "bin": {
     "covid": "./index.js"
   },
@@ -10,14 +10,12 @@
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jose Santano",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^3.0.0",
-    "clui": "^0.3.6",
     "commander": "^5.0.0",
     "got": "^10.6.0",
-    "node-emoji": "^1.10.0",
     "country-list": "^2.2.0"
   }
 }
