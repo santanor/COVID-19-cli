@@ -8,9 +8,9 @@ A small CLI to track the progress of COVID-19
 
 ## Installation
 * Pull the repo
-* Navigate to the src folder
-* Run `npm install -g`
-* The command `covid` should be now accesible from your terminal
+* Navigate to the `src` folder
+* Run `npm install -g` to make the command available globally
+* The command `covid` should be now available on your terminal
 
 ## Usage
 ### Global information
