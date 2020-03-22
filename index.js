@@ -5,25 +5,41 @@ const api = require("./api");
 const utils = require("./utils");
 const chalk = require("chalk");
 
+
+
 async function main() {
     prepareFlags();
     await parseFlags();
 }
 
 function prepareFlags(){
-    program.option('-c, --country <country>', 'Display latest information for the specified country, by code or name');
+    program
+        .option('-c, --country <country>', 'Display latest information for the specified country, by code or name')
+        .option('-g, --global ', 'Display latest global information');
+
+    program.command('top ')
+        .option('-l --limit <number>', 'Limit how many countries to display. By default the limit is 10', "10").action(executeTop);
     program.parse(process.argv);
 }
 
 async function parseFlags(){
     let response = null;
     if(program.country) {
-        await processCountryRoutine(program.country);
-        return;
+        return await processCountryRoutine(program.country);
     }
 
-    //No parameters were provided, so display the global information
-    await processGlobalRoutine();
+    if(program.global){
+        return await processGlobalRoutine();
+    }
+}
+
+async function executeTop(filter, args){
+    let limit = parseInt(args.limit);
+    let response = await api.casesByCountry();
+
+    console.log("Latest information ordered by "+chalk.bold("total cases")+". Updated on: "+chalk.bold(response.statistic_taken_at))
+    let infoTable = utils.printTopCommandCountryInformation(response.countries_stat, limit);
+    console.log(infoTable)
 }
 
 async function processGlobalRoutine(){

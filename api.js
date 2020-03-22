@@ -28,3 +28,10 @@ exports.getGlobalInfo = async function getGlobalInfo(){
 
     }catch(err){}
 };
+
+exports.casesByCountry = async function casesByCountry(){
+    try{
+        let response = await api("cases_by_country.php");
+        return response.body;
+    }catch(err){}
+}

@@ -1,5 +1,6 @@
 const { getCode, getName } = require('country-list');
 const chalk = require('chalk');
+const Table = require('cli-table');
 
 
 /**
@@ -35,6 +36,38 @@ exports.printCountryInformation = function printCountry(info){
         return err
     }
 };
+
+exports.printTopCommandCountryInformation = function printTopCommandCountry(allCountries, limit){
+    try{
+        let table = new Table({
+            chars: { 'top': '' , 'top-mid': '' , 'top-left': '' , 'top-right': ''
+                , 'bottom': '' , 'bottom-mid': '' , 'bottom-left': '' , 'bottom-right': ''
+                , 'left': '' , 'left-mid': '' , 'mid': '' , 'mid-mid': ''
+                , 'right': '' , 'right-mid': '' , 'middle': '' }
+        });
+
+        for(let i = 0; i < limit; i++){
+            let info = allCountries[i];
+            let mortalityRate = (parseInt(info.deaths.replace(/,/g, ''))/parseInt(info.cases.replace(/,/g, '')))*100
+
+            table.push([
+                chalk.magenta(info.country_name),
+                "Total Cases:" + chalk.blue(info.cases),
+                "New Cases: " + chalk.yellow(info.new_cases),
+                "Active Cases: " + chalk.yellow(info.active_cases),
+                "Total Deaths: " + chalk.red(info.deaths),
+                "New Deaths: " +chalk.red(info.new_deaths),
+                "Mortality Rate: "+chalk.red(mortalityRate.toFixed(2)+"%"),
+                "Total Recovered: " +chalk.green(info.total_recovered)
+            ])
+        }
+
+        return table.toString();
+
+    }catch(err){
+        return err
+    }
+}
 
 exports.printGlobalInformation = function printGlobalInformation(info){
     try{
