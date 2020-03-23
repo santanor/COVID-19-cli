@@ -1,6 +1,6 @@
 {
   "name": "@santanor/covid-19-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Provides latest COVID-19 information",
   "bin": {
     "covid": "./index.js"
