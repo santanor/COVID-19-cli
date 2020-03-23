@@ -17,12 +17,14 @@ A small CLI to track the progress of COVID-19
 
 ## Usage
 ### Global information
-Run the `covid` command without any parameters to get the latest global information about COVID-19
+Run the `covid global` command to get the latest global information about COVID-19
+### Top information
+Run the command `covid top` to display the top 10 affected countries by total number of cases. You can specify the number of countries to show by adding the flag `-l --limit`. for example `covid top -l 20`.
 ### By Country
-Use the parameter `-c` or `--country` to filter the information by country name or code. 
+Use the parameter `country` to filter the information by country name or code. 
 
-`covid -c Spain`
+`covid country Spain`
 
-`covid -c IT`
+`covid country IT`
 
-`covid --country China`
+`covid country China`
