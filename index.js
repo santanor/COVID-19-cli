@@ -13,10 +13,8 @@ async function main() {
 }
 
 function prepareFlags(){
-    program
-        .option('-c, --country <country>', 'Display latest information for the specified country, by code or name')
-        .option('-g, --global ', 'Display latest global information');
-
+    program.command('global').action(executeGlobal);
+    program.command('country [country]').action(executeCountry);
     program.command('top ')
         .option('-l --limit <number>', 'Limit how many countries to display. By default the limit is 10', "10").action(executeTop);
     program.parse(process.argv);
@@ -33,7 +31,7 @@ async function parseFlags(){
     }
 }
 
-async function executeTop(filter, args){
+async function executeTop(args){
     let limit = parseInt(args.limit);
     let response = await api.casesByCountry();
 
@@ -42,14 +40,14 @@ async function executeTop(filter, args){
     console.log(infoTable)
 }
 
-async function processGlobalRoutine(){
+async function executeGlobal(){
     let response = await api.getGlobalInfo();
 
     console.log("Latest " + chalk.bold("Global")+" information, updated on: "+chalk.bold(response.statistic_taken_at));
     console.log(utils.printGlobalInformation(response))
 }
 
-async function processCountryRoutine(country){
+async function executeCountry(country, args){
     let response = await api.getInformationByCountry(country);
 
     if(response === undefined){
@@ -59,6 +57,8 @@ async function processCountryRoutine(country){
 
     console.log("Latest information for: "+chalk.bold(response.country_name)+". Last updated on: "+chalk.bold(response.record_date))
     console.log(utils.printCountryInformation(response))
+
 }
+
 
 main();
