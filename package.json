@@ -1,6 +1,6 @@
 {
   "name": "@santanor/covid-19-cli",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Provides latest COVID-19 information",
   "bin": {
     "covid": "./index.js"
@@ -9,7 +9,7 @@
     "start": "node index.js country Spain",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
-  "keywords": [],
+  "keywords": ["Covid", "Coronavirus", "CLI", "Linux", "Mac", "COVID-19", "Virus"],
   "author": "Jose Santano",
   "license": "MIT",
   "dependencies": {

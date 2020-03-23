@@ -23,7 +23,7 @@ exports.getCountryCode = function getCountryCode(nameOrCode){
 
 exports.printCountryInformation = function printCountry(info){
     try{
-        let result = "Total cases: " + chalk.blue(info.total_cases);
+        let result = "Total cases: " + chalk.cyan(info.total_cases);
         result += ", New Cases: " + chalk.yellow(info.new_cases);
         result += ", Active Cases: " + chalk.yellow(info.active_cases);
         result += ", Total Deaths: " + chalk.red(info.total_deaths);
@@ -52,7 +52,7 @@ exports.printTopCommandCountryInformation = function printTopCommandCountry(allC
 
             table.push([
                 chalk.magenta(info.country_name),
-                "Total Cases:" + chalk.blue(info.cases),
+                "Total Cases: " + chalk.cyan(info.cases),
                 "New Cases: " + chalk.yellow(info.new_cases),
                 "Active Cases: " + chalk.yellow(info.active_cases),
                 "Total Deaths: " + chalk.red(info.deaths),
@@ -71,7 +71,7 @@ exports.printTopCommandCountryInformation = function printTopCommandCountry(allC
 
 exports.printGlobalInformation = function printGlobalInformation(info){
     try{
-        let result = "Total cases: " + chalk.blue(info.total_cases);
+        let result = "Total cases: " + chalk.cyan(info.total_cases);
         result += ", New Cases: " + chalk.yellow(info.new_cases);
         result += ", Total Deaths: " + chalk.red(info.total_deaths);
         result += ", New Deaths: " +chalk.red(info.new_deaths);
